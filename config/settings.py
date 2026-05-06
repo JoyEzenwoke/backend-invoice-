@@ -1,3 +1,6 @@
+# config\settings.py
+import dj_database_url
+
 """
 Django settings for config project.
 
@@ -23,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9)ide$!hb_e@f(9)ilg^s+v)77@bd)#j*j1)&)v1uurj*0@^!&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -39,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 
-# Third party apps
+ # Third party apps
+    'rest_framework',
+    'drf_spectacular',
+
+ # my apps
     'invoices',
     'clients',
     'items',
@@ -123,3 +130,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Invoice API',
+    'DESCRIPTION': 'API for managing invoices, clients, and items',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+
+
+DATABASES = {
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+}
+STATIC_ROOT = BASE_DIR / 'staticfiles'
