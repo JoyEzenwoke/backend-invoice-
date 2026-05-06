@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-9)ide$!hb_e@f(9)ilg^s+v)77@bd)#j*j1)&)v1uurj*0@^!&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['backend-invoice-u5tx.onrender.com']
 
 
 # Application definition
@@ -147,3 +147,7 @@ DATABASES = {
     'default': dj_database_url.config(default='sqlite:///db.sqlite3')
 }
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://backend-invoice-u5tx.onrender.com"
+]
