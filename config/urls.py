@@ -12,8 +12,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # API routes
-    path('api/v1/clients/', include('clients.urls')),
-    path('api/v1/invoices/', include('invoices.urls')),
+    path('api/clients/', include('clients.urls')),
+    path('api/invoices/', include('invoices.urls')),
 
     #  Swagger schema (raw JSON)
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
